@@ -1,0 +1,203 @@
+@page {
+  margin-top: 160px;
+}
+
+
+body,
+h1,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+  
+}
+
+
+.prl{
+  font-size: 1.6rem;
+  padding-left: 15%;
+  margin-top:-2rem;
+  font-weight: 400;
+}
+.prl2{
+  padding-left: 43%;
+  font-size: 1.6rem;
+  margin-top: -1rem;
+  font-weight: 400;
+}
+.header_img{
+  padding-left: 40%;
+  padding-bottom: 2rem; ;
+  border-bottom: 1px solid black ;
+}
+.header_img2{
+  padding-top: 3.5rem;
+  border-bottom: 1px solid black ;
+  padding-left: 40%;
+  padding-bottom: 1.5rem;
+}
+.header_img3{
+  padding-left: 40%;
+  border-bottom: 1px solid black;
+  margin-top: -1rem;
+  padding-bottom: 1.5rem;
+}
+body {
+  font-family: Arial, sans-serif;
+  padding: 60px;
+}
+
+h1 {
+  color: black;
+  margin-bottom: 40px;
+  padding: 3rem auto;
+  margin-top: 2rem;
+  font-size: 2rem;
+  font-weight: 500;
+
+}
+.self-r{
+  margin-top: 2rem !important;
+}
+.peer-r{
+  margin-top: 3rem !important;
+  margin-bottom: 0.5rem !important;
+}
+.meaning {
+  color: #0099cc !important;
+  
+}
+
+.varName {
+  font-weight: bold !important;
+}
+
+h2 {
+  color: black;
+  font-size: 1.3rem;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+.self-evaluation{
+  padding-left: 24.5%;
+  font-size: 1.3rem;
+  margin-top: -8rem;
+}
+
+.rating{
+  padding-top: 6rem;
+
+  font-size: 1.3rem;
+}
+.bonus{
+  margin-bottom: 28rem;
+}
+.pr{
+  margin: 2rem auto !important;
+}
+p {
+  margin: 10px 0;
+  line-height: 1.4;
+  font-size: 19spx;
+}
+
+.para-heading {
+  font-weight: bold;
+  margin-top: 20px;
+}
+.header-logo{
+  border: 1px solid black;
+  padding-left: 5rem;
+}
+
+.core_projects {
+  font-style: italic;
+}
+
+.peer_res {
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.cust_obs,
+.customer_obs,
+.insisting,
+.highest,
+.bias,
+.bias_action,
+.ownership,
+.rating,
+.diff {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.self-response {
+  margin-top: 20px;
+}
+
+.peer-response {
+  border: 1px solid black;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.header {
+  border: 1px solid black;
+}
+.peer-responses {
+  margin-bottom: 2.5rem;
+}
+.question-heading {
+  padding-top: 1.5rem;
+  padding-bottom:1rem ;
+  font-size: 1rem;
+  margin-top: 1rem;
+  font-weight: 700;
+}
+.self-responses{
+  border: 1px solid black;
+  padding: 10px;
+  margin-top: 20px;
+  white-space: pre-line;
+}
+.self-response-heading{
+
+  font-size: 1rem;
+  margin-top: 2.2rem;
+  padding: 1rem, auto;
+}
+.header-logo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.blue{
+  background-color: blue;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+.footer-logo {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+._blank{
+  position: relative;
+  margin-top: 10.5rem;
+  padding-top: 2.5rem;
+ 
+}
