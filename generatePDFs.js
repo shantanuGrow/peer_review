@@ -14,13 +14,13 @@ function generateStars(rating) {
 
   const questionList = [
     'How would you rate the team member on "Customer Obsession"? Any action or initiative should always aim to improve customer trust and should be taken keeping customer interest in mind. A rating of 1 signifies the team member doesn\'t think with a customer-first approach. A rating of 5 means the team member always thinks customer first, and all his actions are aligned keeping the best interest of the customers in mind.',
-    'Highlight a few instances of why you gave the team member a particular rating in "Customer Obsession" The question is meant to make you think about why you gave someone a rating in the "Customer Obsession" value. You might feel someone is a 3, thinking deeply and putting down instances will help you realize what you rated is actually right.',
+    'Highlight a few instances of why you gave the team member a particular rating in "Customer Obsession". The question is meant to make you think about why you gave someone a rating in the "Customer Obsession" value. You might feel someone is a 3, thinking deeply and putting down instances will help you realize what you rated is actually right.',
     'How would you rate the team member on their "Bias for Action" As an early-stage company, it is do-or-die for us to get things done. The "Bias for Action" value measures this. 1 on the scale means the team member you are rating needs to be pushed to get their things out and doesn\'t take initiative themselves. 3 on the scale would mean they get their work done by themselves and that\'s it. A rating of 5 means the team member not only gets their work done but also takes initiative and fixes whatever and wherever they feel something is not right',
     'Highlight a few instances of why you gave the team member a particular rating in "Bias For Action" The question is meant to make you think about why you gave someone a rating in the "Bias for Action" value. Thinking deeply and putting down instances will help you realize what you rated is actually right.',
     'How would you rate the team member on "Insisting on Highest Standards"* Processes, products, and services with new and recurring defects will fail. "Insisting on Highest Standards" ensures what we build stays. It means ensuring defects don\'t get sent down the line and those once fixed remain fixed. A rating of 1 means the team member builds things that are not up to standard and with defects. A rating of 3 means what the team member builds is defect free. A rating of 5 means the team member ensures things are defect-free not just in what he does but also in whatever the team is building.',
     'Highlight a few instances of why you gave the team member a particular rating on "Insisting on Highest Standards". The question is meant to make you think about why you gave someone a rating on the "Insisting on Highest Standards" value.',
     'How would you rate the team member on "Ownership" One of the key tenets to building a successful team is "Ownership". You\'ll never need to follow up on a task with an Owner. Team members are expected to own and drive initiatives tagged to them. Owners act on behalf of the entire company, beyond just their own team. "That’s not my job" is something they\'ll never say. A rating of 1 would mean the team member is a Renter, not an Owner, they\'ll try to move things away from them and think short term. A rating of 5 would mean the team member never shies away from any task, anything that\'s tagged to them gets done.',
-    'Highlight a few instances of why you gave the team member a particular rating on "Ownership" The question is meant to make you think about why you gave someone a rating on the "Ownership" value.',
+    'Highlight a few instances of why you gave the team member a particular rating on "Ownership". The question is meant to make you think about why you gave someone a rating on the "Ownership" value.',
     "What should this person do differently?",
   ];
   for (const data of excelData) {
@@ -262,7 +262,7 @@ function generateStars(rating) {
             return `
               <h2 class="self-response-heading">${question}</h2>
               <p class="self-responses">${
-                question.includes("rate")
+                question.includes("How would you rate")
                   ? generateStars(selfData[0][question])
                   : selfData[0][question]
               }</p>
@@ -276,11 +276,13 @@ function generateStars(rating) {
         ${questionList
           .map(question => {
             let firstProcess = true;
+            let count = 0;
             return `
               <h2 class="question-heading">${question}</h2>
               <div class="peer-responses">
                 ${userData
                   .map(response => {
+                    count = count + 1;
                     const questionResponse = response[question];
                     if (questionResponse !== null && questionResponse !== undefined && questionResponse !== "") {
                       firstProcess = false;
@@ -294,7 +296,7 @@ function generateStars(rating) {
                       }</p>
                       `;
                     }
-                    if (firstProcess === true){
+                    if (firstProcess === true && count === (userData.length -1)){
                       firstProcess = false
                       return '<p class="peer-response"></p>'
                     }
