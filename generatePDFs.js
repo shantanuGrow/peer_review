@@ -41,7 +41,13 @@ function generateStars(rating) {
       sum3 = 0,
       sum4 = 0;
     let sum5 = 0.0;
+    // let ignore_count = 0;
     userData.map(res => {
+      // console.log(parseFloat(res['Ignore Flag']))
+      // ignore_count = ignore_count + ((parseFloat(res['Ignore Flag']) === 0 || res['Ignore Flag'] === true) ? 1:0);
+      // console.log(ignore_count);
+      // sum1 = sum1 + ((parseFloat(res['Ignore Flag']) === 0 || res['Ignore Flag'] === true) ? 0 : parseFloat(res['How would you rate the team member on "Customer Obsession"? Any action or initiative should always aim to improve customer trust and should be taken keeping customer interest in mind. A rating of 1 signifies the team member doesn\'t think with a customer-first approach. A rating of 5 means the team member always thinks customer first, and all his actions are aligned keeping the best interest of the customers in mind.']));
+      // console.log(sum1);
       sum1 = sum1 + parseFloat(res['How would you rate the team member on "Customer Obsession"? Any action or initiative should always aim to improve customer trust and should be taken keeping customer interest in mind. A rating of 1 signifies the team member doesn\'t think with a customer-first approach. A rating of 5 means the team member always thinks customer first, and all his actions are aligned keeping the best interest of the customers in mind.']);
       (sum2 =
         sum2 + parseFloat(res['How would you rate the team member on their "Bias for Action" As an early-stage company, it is do-or-die for us to get things done. The "Bias for Action" value measures this. 1 on the scale means the team member you are rating needs to be pushed to get their things out and doesn\'t take initiative themselves. 3 on the scale would mean they get their work done by themselves and that\'s it. A rating of 5 means the team member not only gets their work done but also takes initiative and fixes whatever and wherever they feel something is not right'])),
@@ -52,10 +58,15 @@ function generateStars(rating) {
           )),
         (sum4 = sum4 + parseFloat(res['How would you rate the team member on "Ownership" One of the key tenets to building a successful team is "Ownership". You\'ll never need to follow up on a task with an Owner. Team members are expected to own and drive initiatives tagged to them. Owners act on behalf of the entire company, beyond just their own team. "That’s not my job" is something they\'ll never say. A rating of 1 would mean the team member is a Renter, not an Owner, they\'ll try to move things away from them and think short term. A rating of 5 would mean the team member never shies away from any task, anything that\'s tagged to them gets done.']));
     });
+    // sum1 = (sum1 / (userData.length- ignore_count)).toFixed(2);
+    // sum2 = (sum2 / (userData.length- ignore_count)).toFixed(2);
+    // sum3 = (sum3 / (userData.length- ignore_count)).toFixed(2);
+    // sum4 = (sum4 / (userData.length- ignore_count)).toFixed(2);
     sum1 = (sum1 / userData.length).toFixed(2);
     sum2 = (sum2 / userData.length).toFixed(2);
     sum3 = (sum3 / userData.length).toFixed(2);
     sum4 = (sum4 / userData.length).toFixed(2);
+
     const averageOfSums =
       (parseFloat(sum1) + parseFloat(sum2) + parseFloat(sum3) + parseFloat(sum4)) / 4;
     const averageOfSumsRounded = averageOfSums.toFixed(2);
@@ -265,21 +276,19 @@ function generateStars(rating) {
         ${questionList
           .map(question => {
             let firstProcess = true;
-            console.log("outer here")
             return `
               <h2 class="question-heading">${question}</h2>
               <div class="peer-responses">
                 ${userData
                   .map(response => {
                     const questionResponse = response[question];
-                    if (questionResponse !== null && questionResponse !== undefined) {
-                      console.log("here")
+                    if (questionResponse !== null && questionResponse !== undefined && questionResponse !== "") {
                       firstProcess = false;
-                      const stlPrefix = stlValues.includes(response["Email address"]) ? "(stl) " : "";
+                      const stlPrefix = stlValues.includes(response["Email address"]) ? "("+'<span style="color: blue">STL</span>'+") " : "";
                       return `
                         <p class="peer-response">
                         ${stlPrefix}${response["name"]}: ${
-                        question.includes("rate")
+                        question.includes("How would you rate")
                           ? generateStars(questionResponse)
                           : questionResponse
                       }</p>
@@ -289,9 +298,6 @@ function generateStars(rating) {
                       firstProcess = false
                       return '<p class="peer-response"></p>'
                     }
-
-                    console.log(firstProcess)
-                    console.log(firstProcess ? "" : '<p class="peer-response"></p>')
                     return "";
                   })
                   .join("")}
