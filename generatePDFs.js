@@ -134,7 +134,7 @@ function generateStars(rating) {
       <body>
    
       <h1 class ="prl">PERFORMANCE REVIEW LETTER</h1>
-      <h3 class ="prl2">H1'23</h3>
+      <h3 class ="prl2">H2'23</h3>
      
       
       <p>To,</p>
